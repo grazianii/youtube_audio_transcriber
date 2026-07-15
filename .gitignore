@@ -1,0 +1,13 @@
+.env
+
+audios/
+
+transcripts/
+
+__pycache__/
+
+*.pyc
+
+*.db
+
+processed_videos.json
