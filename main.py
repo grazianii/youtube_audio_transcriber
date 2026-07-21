@@ -18,23 +18,26 @@ QUERIES = [
     "ATS currículo TI"
 ]
 
-# Cria lista de vídeos
 videos = []
 
-# Busca vídeos e adiciona à lista
 for query in QUERIES:
     videos.extend(
         search_videos(
-        query = query,
-        max_results=5
+            query=query,
+            max_results=3
         )
     )
 
-# Baixa, transcreve e salva vídeos
 for video in videos:
     print("-" * 30)
     print(video["title"])
-    #print(video["url"])
+
     audio = download_audio(video["url"])
+
+    if audio is None:
+        continue
+
     transcript = transcribe(audio)
     print(f"Transcrição salva em: {transcript}")
+
+print("\nTranscrição concluída com sucesso!")
